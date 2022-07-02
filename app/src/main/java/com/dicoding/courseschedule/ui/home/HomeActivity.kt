@@ -30,7 +30,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         supportActionBar?.title = resources.getString(R.string.today_schedule)
 
-
         val factory = HomeViewModelFactory.createFactory(this)
         viewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
 
