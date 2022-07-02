@@ -42,13 +42,14 @@ class AddCourseActivity : AppCompatActivity(), TimePickerFragment.DialogTimeList
             timePickerFragment.show(supportFragmentManager, "end")
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_add, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.action_insert -> {
                 val editCourseName: TextInputEditText = findViewById(R.id.edit_coursename)
                 val courseName = editCourseName.text.toString().trim()
@@ -57,17 +58,20 @@ class AddCourseActivity : AppCompatActivity(), TimePickerFragment.DialogTimeList
                 val day = daySpinner.selectedItemPosition
 
                 val editLecturer: TextInputEditText = findViewById(R.id.edit_lecturer)
-                val lecturer = findViewById<TextInputEditText>(R.id.edit_lecturer).text.toString().trim()
+                val lecturer =
+                    findViewById<TextInputEditText>(R.id.edit_lecturer).text.toString().trim()
 
                 val editNote: TextInputEditText = findViewById(R.id.edit_note)
                 val note = editNote.text.toString().trim()
 
-                if (courseName.isEmpty() || lecturer.isEmpty() || note.isEmpty() || startTime.isEmpty() || endTime.isEmpty()){
-                    Toast.makeText(applicationContext, "Please fill the form!", Toast.LENGTH_SHORT).show()
-                } else{
+                if (courseName.isEmpty() || lecturer.isEmpty() || note.isEmpty() || startTime.isEmpty() || endTime.isEmpty()) {
+                    Toast.makeText(applicationContext, "Please fill the form!", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
                     viewModel.insertCourse(courseName, day, startTime, endTime, lecturer, note)
                     finish()
-                    Toast.makeText(applicationContext, "Course has been added!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Course has been added!", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
@@ -80,11 +84,10 @@ class AddCourseActivity : AppCompatActivity(), TimePickerFragment.DialogTimeList
             set(Calendar.MINUTE, minute)
         }
         val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-        if (tag == "start"){
+        if (tag == "start") {
             editStartTime.text = timeFormat.format(calender.time)
             startTime = timeFormat.format(calender.time)
-        }
-        else{
+        } else {
             editEndTime.text = timeFormat.format(calender.time)
             endTime = timeFormat.format(calender.time)
         }

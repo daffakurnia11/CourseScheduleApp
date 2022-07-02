@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.courseschedule.data.DataRepository
 import java.lang.reflect.InvocationTargetException
 
-class AddCourseViewModelFactory (private val repository: DataRepository?) : ViewModelProvider.Factory {
+class AddCourseViewModelFactory(private val repository: DataRepository?) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         try {
             return modelClass.getConstructor(DataRepository::class.java).newInstance(repository)

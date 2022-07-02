@@ -15,7 +15,7 @@ import java.util.*
 //TODO 4 : Implement repository with appropriate dao
 class DataRepository(private val dao: CourseDao) {
 
-    fun getNearestSchedule(queryType: QueryType) : LiveData<Course?> {
+    fun getNearestSchedule(queryType: QueryType): LiveData<Course?> {
 //        throw NotImplementedError("needs implementation")
         return dao.getNearestSchedule(nearestQuery(queryType))
     }
@@ -27,9 +27,10 @@ class DataRepository(private val dao: CourseDao) {
         return LivePagedListBuilder(dao.getAll(allData), config).build()
     }
 
-    fun getCourse(id: Int) : LiveData<Course> = dao.getCourse(id)
+    fun getCourse(id: Int): LiveData<Course> = dao.getCourse(id)
 
-    fun getTodaySchedule() : List<Course> = dao.getTodaySchedule(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
+    fun getTodaySchedule(): List<Course> =
+        dao.getTodaySchedule(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
 
     fun insert(course: Course) = executeThread {
         dao.insert(course)

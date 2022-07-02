@@ -7,7 +7,7 @@ import com.dicoding.courseschedule.R
 import com.dicoding.courseschedule.data.Course
 import com.dicoding.courseschedule.util.DayName.Companion.getByNumber
 
-class CourseViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class CourseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private lateinit var course: Course
     private val timeString = itemView.context.resources.getString(R.string.time_format)

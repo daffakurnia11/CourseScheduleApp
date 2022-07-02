@@ -7,7 +7,7 @@ import com.dicoding.courseschedule.data.Course
 import com.dicoding.courseschedule.data.DataRepository
 import com.dicoding.courseschedule.util.QueryType
 
-class HomeViewModel(private val repository: DataRepository): ViewModel() {
+class HomeViewModel(private val repository: DataRepository) : ViewModel() {
 
     private val _queryType = MutableLiveData<QueryType>()
 
