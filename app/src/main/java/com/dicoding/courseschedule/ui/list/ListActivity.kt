@@ -16,8 +16,11 @@ import com.dicoding.courseschedule.R
 import com.dicoding.courseschedule.data.Course
 import com.dicoding.courseschedule.paging.CourseAdapter
 import com.dicoding.courseschedule.paging.CourseViewHolder
+import com.dicoding.courseschedule.ui.add.AddCourseActivity
+import com.dicoding.courseschedule.ui.detail.DetailActivity
 import com.dicoding.courseschedule.ui.setting.SettingsActivity
 import com.dicoding.courseschedule.util.SortType
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ListActivity : AppCompatActivity() {
 
@@ -36,7 +39,10 @@ class ListActivity : AppCompatActivity() {
         val factory = ListViewModelFactory.createFactory(this)
         viewModel = ViewModelProvider(this, factory).get(ListViewModel::class.java)
 
-        setFabClick()
+        val fab: FloatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener {
+            setFabClick()
+        }
         setUpRecycler()
         initAction()
         updateList()
@@ -50,6 +56,9 @@ class ListActivity : AppCompatActivity() {
 
     private fun onCourseClick(course: Course) {
         //TODO 8 : Intent and show detailed course
+        val detailActivity = Intent(this@ListActivity, DetailActivity::class.java)
+        detailActivity.putExtra(DetailActivity.COURSE_ID, course.id)
+        startActivity(detailActivity)
     }
 
     private fun initAction() {
@@ -69,6 +78,7 @@ class ListActivity : AppCompatActivity() {
 
     private fun setFabClick() {
         //TODO 9 : Create AddCourseActivity to set new course schedule
+        startActivity(Intent(this@ListActivity, AddCourseActivity::class.java))
     }
 
     //TODO 14 : Fixing bug : sort menu not show and course not deleted when list is swiped
