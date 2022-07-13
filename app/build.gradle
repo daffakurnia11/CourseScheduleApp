@@ -30,12 +30,22 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src\\main\\java', 'src\\test', 'src\\test\\java'
+            }
+        }
+    }
 }
 
 dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     implementation 'androidx.preference:preference-ktx:1.2.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     ext {
         core_version = "1.8.0"
         appcompat_version = "1.4.2"
